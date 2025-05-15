@@ -70,9 +70,9 @@ export default function NewsSection() {
   ]
 
   return (
-    <section className="w-full py-12 bg-[#f0f0ff]">
+    <section id="berita" className="w-full py-12 bg-[#f0f0ff]">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-purple-700 text-center mb-10">Berita Seputar BEASISWA</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-purple-700 text-center mb-10">Berita Seputar Beasiswa</h2>
 
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
           {/* Featured News */}

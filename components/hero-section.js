@@ -148,7 +148,7 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="relative w-full bg-[#f0f0ff] overflow-hidden py-8 md:py-12">
+    <section id="beranda" className="relative w-full bg-[#f0f0ff] overflow-hidden py-8 md:py-12">
       <div className="relative w-full mx-auto">
         <div
           ref={carouselRef}
@@ -206,8 +206,8 @@ export default function HeroSection() {
             <button
               key={index}
               onClick={() => scrollToSlide(index)}
-              className={`h-3 w-3 rounded-full transition-all ${
-                currentSlide === index ? "bg-purple-600" : "bg-gray-300"
+              className={`h-2 w-2 rounded-full transition-all ${
+                currentSlide === index ? "bg-purple-600" : "bg-purple-300"
               }`}
               aria-label={`Go to slide ${index + 1}`}
             />
