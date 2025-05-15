@@ -36,25 +36,18 @@ export default function HeroSection() {
     },
     {
       id: 4,
-      image: "/assets/hero1.png",
-      title: "Beasiswa Yayasan Bursa Malaysia",
+      image: "/assets/hero4.jpg",
+      title: "School Admission",
       description:
-        "Kesempatan untuk mahasiswa berprestasi dengan beasiswa penuh",
-      url: "/beasiswa/yayasan-bursa-malaysia-4",
+        "Pendaftaran sekolah untuk mahasiswa baru dengan beasiswa penuh",
+      url: "/beasiswa/school-admission-4",
     },
     {
       id: 5,
-      image: "/assets/hero2.png",
-      title: "MRC Scholarship Awards",
-      description: "Program beasiswa untuk berbagai bidang studi",
-      url: "/beasiswa/mrc-scholarship-awards-5",
-    },
-    {
-      id: 6,
-      image: "/assets/hero3.png",
-      title: "PHFoundation Scholarships",
-      description: "Beasiswa eksklusif untuk mahasiswa berprestasi",
-      url: "/beasiswa/phfoundation-scholarships-6",
+      image: "/assets/hero5.jpg",
+      title: "Class of 2025",
+      description: "Beasiswa untuk mahasiswa baru tahun ajaran 2025",
+      url: "/beasiswa/class-of-2025-5",
     },
   ];
 

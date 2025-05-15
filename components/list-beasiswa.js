@@ -4,36 +4,106 @@ export default function ListBeasiswa() {
   const oddSemesterScholarships = [
     {
       id: 1,
-      name: "Beasiswa Indonesia maju",
-      url: "/beasiswa/indonesia-maju",
-    },
-    {
-      id: 2,
       name: "Beasiswa Djarum Plus",
       url: "/beasiswa/djarum-plus",
     },
     {
-      id: 3,
-      name: "Beasiswa bank Indonesia",
+      id: 2,
+      name: "Beasiswa Bank Indonesia",
       url: "/beasiswa/bank-indonesia",
+    },
+    {
+      id: 3,
+      name: "Beasiswa PPA",
+      url: "/beasiswa/ppa",
+    },
+    {
+      id: 4,
+      name: "Beasiswa Unggulan Kemendikbud",
+      url: "/beasiswa/unggulan-kemendikbud",
+    },
+    {
+      id: 5,
+      name: "Beasiswa Karya Salemba Empat",
+      url: "/beasiswa/kse",
+    },
+    {
+      id: 6,
+      name: "Beasiswa BCA Finance",
+      url: "/beasiswa/bca-finance",
+    },
+    {
+      id: 7,
+      name: "Beasiswa XL Future Leaders",
+      url: "/beasiswa/xl-future-leaders",
+    },
+    {
+      id: 8,
+      name: "Beasiswa Astra",
+      url: "/beasiswa/astra",
+    },
+    {
+      id: 9,
+      name: "Beasiswa Sampoerna Foundation",
+      url: "/beasiswa/sampoerna-foundation",
+    },
+    {
+      id: 10,
+      name: "Beasiswa CIMB Niaga",
+      url: "/beasiswa/cimb-niaga",
     },
   ];
 
   const evenSemesterScholarships = [
     {
       id: 1,
-      name: "Beasiswa Indonesia maju",
-      url: "/beasiswa/indonesia-maju-genap",
+      name: "Beasiswa Indonesia Maju",
+      url: "/beasiswa/indonesia-maju",
     },
     {
       id: 2,
-      name: "Beasiswa Djarum Plus",
-      url: "/beasiswa/djarum-plus-genap",
+      name: "Beasiswa LPDP",
+      url: "/beasiswa/lpdp",
     },
     {
       id: 3,
-      name: "Beasiswa bank Indonesia",
-      url: "/beasiswa/bank-indonesia-genap",
+      name: "Beasiswa Bidikmisi",
+      url: "/beasiswa/bidikmisi",
+    },
+    {
+      id: 4,
+      name: "Beasiswa Tanoto Foundation",
+      url: "/beasiswa/tanoto-foundation",
+    },
+    {
+      id: 5,
+      name: "Beasiswa Baznas",
+      url: "/beasiswa/baznas",
+    },
+    {
+      id: 6,
+      name: "Beasiswa Mizan",
+      url: "/beasiswa/mizan",
+    },
+    {
+      id: 7,
+      name: "Beasiswa Pertamina Sobat Bumi",
+      url: "/beasiswa/pertamina-sobat-bumi",
+    },
+    {
+      id: 8,
+      name: "Beasiswa VDMI",
+      url: "/beasiswa/vdmi",
+    },
+    {
+      id: 9,
+      name: "Beasiswa Tokopedia",
+      url: "/beasiswa/tokopedia",
+    },
+    {
+      id: 10,
+      name: "Beasiswa DataPrint",
+      url: "/beasiswa/dataprint",
     },
   ];
 

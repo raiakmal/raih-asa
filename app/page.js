@@ -5,6 +5,8 @@ import Navbar from "../components/navbar";
 import HeroSection from "../components/hero-section";
 import NewsSection from "../components/news-section";
 import PartnerSection from "../components/partner-section";
+import AboutSection from "../components/about-section";
+import Footer from "@/components/footer";
 
 export default function Home() {
   useEffect(() => {
@@ -26,6 +28,8 @@ export default function Home() {
       <HeroSection />
       <NewsSection />
       <PartnerSection />
+      <AboutSection />
+      <Footer />
     </main>
   );
 }

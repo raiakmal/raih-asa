@@ -18,6 +18,8 @@ export default function Navbar() {
     { name: "Beasiswa", href: "/beasiswa" },
     { name: "Berita", href: "#berita" },
     { name: "Mitra", href: "#mitra" },
+    { name: "Tentang", href: "#tentang" },
+    { name: "Kontak", href: "mailto:info@raihasa.com" },
   ];
 
   const handleClick = (e, link) => {
@@ -70,9 +72,13 @@ export default function Navbar() {
           {navLinks.map((link) => (
             <Link
               key={link.name}
-              href={link.name === "Beasiswa" ? link.href : "#"}
-              onClick={(e) => handleClick(e, link)}
+              href={link.href}
+              onClick={
+                link.name === "Kontak" ? undefined : (e) => handleClick(e, link)
+              }
               className="text-base font-medium transition-colors text-gray-800 hover:text-purple-600"
+              target={link.name === "Kontak" ? "_blank" : undefined}
+              rel={link.name === "Kontak" ? "noopener noreferrer" : undefined}
             >
               {link.name}
             </Link>
@@ -97,13 +103,19 @@ export default function Navbar() {
             {navLinks.map((link) => (
               <Link
                 key={link.name}
-                href={link.name === "Beasiswa" ? link.href : "#"}
-                onClick={(e) => handleClick(e, link)}
+                href={link.href}
+                onClick={
+                  link.name === "Kontak"
+                    ? undefined
+                    : (e) => handleClick(e, link)
+                }
                 className={`block py-2 text-base font-medium transition-colors ${
                   currentPath === "/beasiswa" && link.name === "Beasiswa"
                     ? "text-purple-600"
                     : "text-gray-800 hover:text-purple-600"
                 }`}
+                target={link.name === "Kontak" ? "_blank" : undefined}
+                rel={link.name === "Kontak" ? "noopener noreferrer" : undefined}
               >
                 {link.name}
               </Link>
