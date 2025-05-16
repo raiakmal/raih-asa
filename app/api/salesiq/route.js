@@ -1,5 +1,5 @@
-import { readFileSync } from "fs";
 import path from "path";
+import { readFileSync } from "fs";
 import crypto from "crypto";
 import { NextResponse } from "next/server";
 
@@ -57,13 +57,22 @@ const answers = {
   "apa itu beasiswa afirmasi untuk daerah tertinggal": "Beasiswa ini diberikan khusus untuk pelajar dari daerah tertinggal agar mendapat kesempatan pendidikan lebih baik.",
 };
 
-const publicKeyPath = path.join(process.cwd(), "zoho_public.pem");
-const publicKey = readFileSync(publicKeyPath, "utf8");
-
 export async function POST(req) {
   const signature = req.headers.get("x-zohosignature");
   const rawBody = await req.text();
   const bodyBuffer = Buffer.from(rawBody);
+
+  const publicKeyPath = path.join(process.cwd(), "public", "zoho_public.pem");
+
+  let publicKey;
+  try {
+    publicKey = readFileSync(publicKeyPath, "utf8");
+  } catch (error) {
+    return NextResponse.json(
+      { error: "Gagal membaca file zoho_public.pem" },
+      { status: 500 }
+    );
+  }
 
   const isVerified = crypto.verify(
     "sha256",
@@ -83,13 +92,7 @@ export async function POST(req) {
   const questionRaw = body.question || body.input || "";
   const question = questionRaw.toLowerCase().trim();
 
-  if (answers[question]) {
-    return NextResponse.json({
-      replies: [{ text: answers[question] }],
-    });
-  }
+  const reply = answers[question] || "Maaf, saya belum punya jawaban untuk pertanyaan itu.";
 
-  return NextResponse.json({
-    replies: [{ text: "Maaf, saya belum punya jawaban untuk pertanyaan itu." }],
-  });
+  return NextResponse.json({ replies: [{ text: reply }] });
 }
