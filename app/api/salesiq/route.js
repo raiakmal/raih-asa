@@ -1,3 +1,6 @@
+import { readFileSync } from "fs";
+import path from "path";
+import crypto from "crypto";
 import { NextResponse } from "next/server";
 
 const answers = {
@@ -54,50 +57,39 @@ const answers = {
   "apa itu beasiswa afirmasi untuk daerah tertinggal": "Beasiswa ini diberikan khusus untuk pelajar dari daerah tertinggal agar mendapat kesempatan pendidikan lebih baik.",
 };
 
+const publicKeyPath = path.join(process.cwd(), "zoho_public.pem");
+const publicKey = readFileSync(publicKeyPath, "utf8");
+
 export async function POST(req) {
-  const body = await req.json();
+  const signature = req.headers.get("x-zohosignature");
+  const rawBody = await req.text();
+  const bodyBuffer = Buffer.from(rawBody);
+
+  const isVerified = crypto.verify(
+    "sha256",
+    bodyBuffer,
+    {
+      key: publicKey,
+      padding: crypto.constants.RSA_PKCS1_PADDING,
+    },
+    Buffer.from(signature, "base64")
+  );
+
+  if (!isVerified) {
+    return NextResponse.json({ error: "Signature tidak valid" }, { status: 403 });
+  }
+
+  const body = JSON.parse(rawBody);
   const questionRaw = body.question || body.input || "";
   const question = questionRaw.toLowerCase().trim();
 
-  // Cek jawaban statis dulu
   if (answers[question]) {
     return NextResponse.json({
       replies: [{ text: answers[question] }],
     });
   }
 
-  // Kalau tidak ada jawaban statis, panggil OpenAI API
-  try {
-    const openaiRes = await fetch("https://api.openai.com/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        model: "gpt-3.5-turbo",
-        messages: [{ role: "user", content: questionRaw }],
-      }),
-    });
-
-    const data = await openaiRes.json();
-
-    if (!openaiRes.ok) {
-      // Kalau error dari API (misal kuota habis)
-      throw new Error(data.error?.message || "OpenAI API error");
-    }
-
-    const reply = data.choices[0].message.content;
-
-    return NextResponse.json({
-      replies: [{ text: reply }],
-    });
-
-  } catch (error) {
-    // Kalau error atau kuota habis, fallback kasih pesan
-    return NextResponse.json({
-      replies: [{ text: "Maaf, saya sedang tidak bisa menjawab sekarang. Silakan coba lagi nanti." }],
-      error: error.message,
-    });
-  }
+  return NextResponse.json({
+    replies: [{ text: "Maaf, saya belum punya jawaban untuk pertanyaan itu." }],
+  });
 }
