@@ -17,20 +17,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        {/* Inject Zoho SalesIQ Script */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.$zoho = window.$zoho || {};
-              $zoho.salesiq = $zoho.salesiq || { ready: function () {} };
-            `,
-          }}
-        />
-        <script
-          id="zsiqscript"
-          src="https://salesiq.zohopublic.com/widget?wc=siq4d2c0069254d883a29c875ed6bb7ab556f1a12ed48b4dc8e45f95004f96236c1"
-          defer
-        />
+        {/* Tidio Chatbot */}
+        <script src="//code.tidio.co/rei9hjzmcaidt8diup9ywz311dq5murk.js" async></script>
       </head>
       <body className={`${poppins.variable} antialiased`}>{children}</body>
     </html>
